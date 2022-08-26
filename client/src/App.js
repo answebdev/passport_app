@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import Post from './pages/Post';
 import './app.css';
 
 // Video: https://www.youtube.com/watch?v=7K9kDrtc4S8
@@ -9,7 +10,7 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <Home />
+      <Post />
     </div>
   );
 };

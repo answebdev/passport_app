@@ -2,7 +2,7 @@ import React from 'react';
 
 const Card = ({ post }) => {
   return (
-    <div>
+    <div className='card'>
       <span className='title'>{post.title}</span>
       <img className='img' src={post.img} alt='' />
       <p className='desc'>{[post.desc]}</p>
