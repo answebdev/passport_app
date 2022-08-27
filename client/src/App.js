@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Post from './pages/Post';
@@ -9,10 +10,16 @@ import './app.css';
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Login />
-    </div>
+    <BrowserRouter>
+      <div>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/post/:id' element={<Post />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 };
 
