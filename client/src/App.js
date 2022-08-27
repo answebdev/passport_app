@@ -15,7 +15,7 @@ const App = () => {
 
   const [user, setUser] = useState(null);
 
-  // Function to fetch user after successful authentification
+  // Function to fetch user after successful authentication
   useEffect(() => {
     const getUser = () => {
       fetch('http://localhost:5000/auth/login/success', {
@@ -43,8 +43,8 @@ const App = () => {
   }, []);
 
   console.log(user);
-
-  //1:05:30
+  // console.log(user.displayName);
+  // console.log(user.photos[0].value);
 
   return (
     <BrowserRouter>
