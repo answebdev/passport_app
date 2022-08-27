@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -9,7 +10,41 @@ import './app.css';
 // Code: https://github.com/safak/youtube/tree/react-social-login
 
 const App = () => {
-  const user = false;
+  // Dummy user for testing
+  // const user = false;
+
+  const [user, setUser] = useState(null);
+
+  // Function to fetch user after successful authentification
+  useEffect(() => {
+    const getUser = () => {
+      fetch('http://localhost:5000/auth/login/success', {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Credentials': true,
+        },
+      })
+        .then((response) => {
+          if (response.status === 200) return response.json();
+          throw new Error('Authentication has failed!');
+        })
+        .then((resObject) => {
+          setUser(resObject.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    // Call the function
+    getUser();
+  }, []);
+
+  console.log(user);
+
+  //1:05:30
 
   return (
     <BrowserRouter>
