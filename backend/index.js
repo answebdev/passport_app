@@ -1,8 +1,9 @@
 const cookieSession = require('cookie-session');
 const express = require('express');
 const cors = require('cors');
-const passportSetup = require('./passport')
+const passportSetup = require('./passport');
 const passport = require('passport');
+const authRoute = require('./routes/auth');
 const app = express();
 
 app.use(
@@ -30,9 +31,12 @@ app.use(
   })
 );
 
-// Authentication Methods (from Passport docs, under 'Strategies' - see video around 44:31: https://www.youtube.com/watch?v=7K9kDrtc4S8 )
-// Google
+// Authentication Methods (for Google, Facebook, GitHub) (from Passport docs, under 'Strategies' - see video around 44:31: https://www.youtube.com/watch?v=7K9kDrtc4S8 )
+// Whenever we make a request to this URL ('/auth'),
+// it's going to automatically call the 'authRoute' route (authentication route),
+// and then, we'll be able to use its methods (in 'routes/auth.js').
+app.use('/auth', authRoute);
 
 app.listen('5000', () => {
-  console.log('Server is running!');
+  console.log('Server is running...');
 });

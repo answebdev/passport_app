@@ -1,6 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
+// Put these in a .env file to keep them secret, especially if deploying application
 const GOOGLE_CLIENT_ID =
   '671201144777-4lfaf8rqvsgsbhvbgcj3578aq8angb48.apps.googleusercontent.com';
 const GOOGLE_CLIENT_SECRET = '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';
