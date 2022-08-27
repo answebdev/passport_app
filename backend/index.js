@@ -9,8 +9,9 @@ const app = express();
 app.use(
   cookieSession({
     name: 'session',
-    keys: ['hoodwink'],
-    // Calculate to one day:
+    keys: ['webdev'],
+
+    // Calculate to one day
     maxAge: 24 * 60 * 60 * 100,
   })
 );
@@ -24,7 +25,7 @@ app.use(passport.session());
 app.use(
   cors({
     // Client server:
-    origin: 'http:localhost/3000',
+    origin: 'http://localhost:3000',
     methods: 'GET,POST,PUT,DELETE',
     // Setting 'credentials' to 'true' allows us to send sessions through our client server requests
     credentials: true,

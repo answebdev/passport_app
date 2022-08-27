@@ -10,7 +10,7 @@ router.get('/login/success', (req, res) => {
   if (req.user) {
     res.status(200).json({
       success: true,
-      message: 'successful',
+      message: 'successfull',
       user: req.user,
 
       // You can also send your cookies

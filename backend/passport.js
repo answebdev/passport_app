@@ -1,5 +1,5 @@
-const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const passport = require('passport');
 
 // Put these in a .env file to keep them secret, especially if deploying application
 const GOOGLE_CLIENT_ID =
@@ -11,7 +11,7 @@ passport.use(
     {
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
-      callbackURL: 'http://www.example.com/auth/google/callback',
+      callbackURL: '/auth/google/callback',
     },
     function (accessToken, refreshToken, profile, done) {
       // 'profile' refers to user information: user id, user name, profile picture, etc.
@@ -47,9 +47,9 @@ passport.use(
 // Since sessions are used in thie app, we need to serialize and de-serialize the user to pass our sessions.
 // If you use sessions, you have to use these functions:
 passport.serializeUser((user, done) => {
-  done, user;
+  done(null, user);
 });
 
 passport.deserializeUser((user, done) => {
-  done, user;
+  done(null, user);
 });
