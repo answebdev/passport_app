@@ -1,4 +1,5 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GithubStrategy = require('passport-github2').Strategy;
 const passport = require('passport');
 
 // Put these in a .env file to keep them secret, especially if deploying application
@@ -6,6 +7,10 @@ const GOOGLE_CLIENT_ID =
   '671201144777-4lfaf8rqvsgsbhvbgcj3578aq8angb48.apps.googleusercontent.com';
 const GOOGLE_CLIENT_SECRET = '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';
 
+const GITHUB_CLIENT_ID = 'a1ea8ca26e8fa47fcc7c';
+const GITHUB_CLIENT_SECRET = '3399786ab3b3b690efec46d2cbf559560e38ea76';
+
+// Google Authentication
 passport.use(
   new GoogleStrategy(
     {
@@ -41,6 +46,20 @@ passport.use(
     //   // Save the user
     //   user.
     // }
+  )
+);
+
+// GitHub Authentication
+passport.use(
+  new GithubStrategy(
+    {
+      clientID: GITHUB_CLIENT_ID,
+      clientSecret: GITHUB_CLIENT_SECRET,
+      callbackURL: '/auth/github/callback',
+    },
+    function (accessToken, refreshToken, profile, done) {
+      done(null, profile);
+    }
   )
 );
 

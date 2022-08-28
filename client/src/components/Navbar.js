@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = ({ user }) => {
@@ -29,7 +28,7 @@ const Navbar = ({ user }) => {
           </li>
         </ul>
       ) : (
-        <Link className='link' to='/login'>
+        <Link className='link' to='login'>
           Login
         </Link>
       )}
